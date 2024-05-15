@@ -1,3 +1,7 @@
+.error{
+    text-align: center;
+    color: red;
+}
 .review{
     padding: 5px;
     border: 1px solid grey;
