@@ -1,6 +1,10 @@
 
 .home{
-
+    padding: 0 15px;
+}
+.error{
+    text-align: center;
+    color: red;
 }
 .loader{
     display: flex;
