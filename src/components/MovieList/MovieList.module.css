@@ -1,6 +1,11 @@
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
 
 .item {
-    width: calc((100% - 120px) / 5);
+    width: calc((100% - 120px) / 4);
     color:  white;
     font-size: 18px;
     transition: transform .25s ease;
