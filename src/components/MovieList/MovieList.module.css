@@ -1,0 +1,22 @@
+
+.item {
+    width: calc((100% - 120px) / 5);
+    color:  white;
+    font-size: 18px;
+    transition: transform .25s ease;
+
+    &:hover,
+    &:focus {
+
+        transform: scale(1.01);
+    }
+}
+
+.film_card {
+    background-color: black;
+    border-radius: 4px;
+    & h3 {
+        padding: 5px 0;
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,44 @@
+
+.home{
+
+}
+.loader{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.title {
+    padding-bottom: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid grey;
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.item {
+    width: calc((100% - 120px) / 5);
+    color:  white;
+    font-size: 18px;
+    transition: transform .25s ease;
+
+    &:hover,
+    &:focus {
+
+        transform: scale(1.01);
+    }
+}
+
+.film_card {
+    background-color: black;
+    border-radius: 4px;
+    & h3 {
+        padding: 5px 0;
+        margin-top: 5px;
+    }
+}

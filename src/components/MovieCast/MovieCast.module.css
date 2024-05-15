@@ -1,0 +1,23 @@
+
+.container{
+    padding: 0 15px;
+}
+.actors_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 20px;
+}
+.actor_item{
+    max-width: calc((100% - 80px) / 5);
+}
+.actor_name{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}          
+.popularity {
+
+}
+.container_img {
+    margin-bottom: 10px;
+}

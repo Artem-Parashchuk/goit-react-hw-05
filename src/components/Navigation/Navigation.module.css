@@ -1,0 +1,25 @@
+.wrapper {
+    padding: 0 15px;
+background-color: rgb(0, 0, 118);
+}
+.header {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.active{
+    color: rgb(204, 0, 0);
+    text-decoration: underline;
+}
+.nav{
+    padding: 20px 0;
+}
+.list{
+    display: flex;
+    gap: 20px;
+
+}
+.item{
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
