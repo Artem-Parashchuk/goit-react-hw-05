@@ -1,44 +1,47 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { searchMovie } from "../../services/api";
 
 import { InfinitySpin } from "react-loader-spinner";
 import s from "./MoviesPage.module.css";
 import MovieList from "../../components/MovieList/MovieList";
-import {  useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movies, setMovie] = useState(null);
   const [valueFilm, setValueFilm] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(true);
 
-  const query = searchParams.get('query') || ''
+  const query = searchParams.get("query") || "";
 
   useEffect(() => {
     const getSearchMovie = async () => {
       try {
+        setLoading(true);
         const res = await searchMovie(query);
         setMovie(res);
       } catch (error) {
         console.error(error.message);
         toast.error("Помилка під час отримання даних");
+      } finally {
+        setLoading(false);
       }
     };
-
     getSearchMovie();
   }, [query]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (valueFilm.trim() === "") {
       toast.error("Поле для пошуку має бути заповненим");
       return;
     }
-    setSearchParams(valueFilm ? {query:valueFilm}:{})
+    setSearchParams({ query: valueFilm });
   };
 
-  if (!movies) {
+  if (loading) {
     return (
       <div className={s.loader}>
         <InfinitySpin
@@ -72,14 +75,11 @@ const MoviesPage = () => {
           Search
         </button>
       </form>
-      <ul className={s.list}>
-        {movies.map((movie) => {
-          return (
-            <MovieList key={movie.id} movie={movie}/>
-          );
-        })}
-      </ul>
-      
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
+      <MovieList films={movies} />
     </>
   );
 };

@@ -7,18 +7,30 @@ import { InfinitySpin } from "react-loader-spinner";
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [details, setDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const location = useLocation();
   const goBack = useRef(location.state ?? "/movies");
 
   useEffect(() => {
     const getDetails = async () => {
-      const res = await fetchMoviesById(movieId);
-      setDetails(res);
+      try{
+        setError(false);
+        setLoading(true)
+        const res = await fetchMoviesById(movieId);
+        setDetails(res);
+      }catch(error) {
+        console.log(error.message)
+        setError(true);
+      }finally{
+        setLoading(false)
+      }
+
     };
     getDetails();
   }, [movieId]);
 
-  if (!details) {
+  if (loading) {
     return (
       <div className={s.loader}>
         <InfinitySpin
@@ -31,6 +43,10 @@ const MovieDetailsPage = () => {
     );
   }
 
+  if (error) {
+    return <h2 className={s.error}>Щось пішло не так, ми працюємо над цим</h2>;
+  }
+  
   return (
     <div className={s.wrapper}>
       <Link
