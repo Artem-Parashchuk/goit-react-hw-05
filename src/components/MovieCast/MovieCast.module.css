@@ -1,4 +1,7 @@
-
+.error{
+    text-align: center;
+    color: red;
+}
 .container{
     padding: 0 15px;
 }
